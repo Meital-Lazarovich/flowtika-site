@@ -1,0 +1,16 @@
+<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Flowtika">
+  <defs>
+    <linearGradient id="ftLogo" x1="12" y1="86" x2="86" y2="18" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1f5a54"/>
+      <stop offset="0.55" stop-color="#2c7a72"/>
+      <stop offset="1" stop-color="#5bb3a8"/>
+    </linearGradient>
+  </defs>
+  <g stroke="url(#ftLogo)" fill="none" stroke-linecap="round">
+    <circle cx="30" cy="42" r="15" stroke-width="7"/>
+    <circle cx="62" cy="72" r="14" stroke-width="6.5"/>
+    <circle cx="80" cy="26" r="8" stroke-width="4.5"/>
+    <line x1="41" y1="52.3" x2="51.8" y2="62.4" stroke-width="7"/>
+    <line x1="44.3" y1="37.4" x2="72.4" y2="28.4" stroke-width="5" stroke-dasharray="4 6.5"/>
+  </g>
+</svg>

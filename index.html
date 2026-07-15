@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flowtika - מגלים מה עוצר את משפך המכירה שלכם</title>
+  <meta name="description" content="Flowtika עוזרת לכם לאתר את צוואר הבקבוק שמגביל את המרת הפניות לעסקאות, ולשפר את משפך המכירה איטרציה אחרי איטרציה. מתחילים בבדיקת רנטגן ל־100 הפניות האחרונות." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&family=Noto+Sans+Hebrew:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a href="#top" class="logo" aria-label="Flowtika - דף הבית">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="ftLogoHeader" x1="12" y1="86" x2="86" y2="18" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#1f5a54"/>
+                <stop offset="0.55" stop-color="#2c7a72"/>
+                <stop offset="1" stop-color="#5bb3a8"/>
+              </linearGradient>
+            </defs>
+            <g stroke="url(#ftLogoHeader)" fill="none" stroke-linecap="round">
+              <circle cx="30" cy="42" r="15" stroke-width="7"/>
+              <circle cx="62" cy="72" r="14" stroke-width="6.5"/>
+              <circle cx="80" cy="26" r="8" stroke-width="4.5"/>
+              <line x1="41" y1="52.3" x2="51.8" y2="62.4" stroke-width="7"/>
+              <line x1="44.3" y1="37.4" x2="72.4" y2="28.4" stroke-width="5" stroke-dasharray="4 6.5"/>
+            </g>
+          </svg>
+        </span>
+        <span class="logo-text">Flowtika</span>
+      </a>
+
+      <nav class="main-nav" aria-label="ניווט ראשי">
+        <a href="#problem">הבעיה</a>
+        <a href="#answers">השאלות הנכונות</a>
+        <a href="#approach">השיטה</a>
+        <a href="#offer">בדיקת רנטגן</a>
+      </nav>
+
+      <a href="#contact" class="btn btn-primary btn-sm header-cta">בואו נתחיל</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="hero">
+      <div class="container hero-grid">
+        <div class="hero-text reveal">
+          <span class="eyebrow">RevOps · שיפור המרה מפנייה לעסקה</span>
+          <h1>אם הייתם יודעים מה עוצר היום את משפך המכירה שלכם - הייתם פותרים את הבעיה כבר אתמול</h1>
+          <p class="lead">
+            אתם משקיעים בפרסום, באנשי מכירות, במערכות ובשיפור התהליך - אבל עדיין לא מרוצים ממספר העסקאות שנסגרות.
+          </p>
+          <p class="hero-sub"><strong>לא חסרים לכם נתונים.</strong> חסרות לכם התשובות שמבהירות מה צריך לעשות עכשיו.</p>
+          <div class="hero-cta">
+            <a href="#contact" class="btn btn-primary">אני רוצה להבין מה עוצר אותנו</a>
+            <a href="#approach" class="btn btn-text">איך אנחנו עובדים ←</a>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal" aria-hidden="true">
+          <div class="funnel-card">
+            <div class="funnel-head">
+              <span class="funnel-title">משפך המכירה</span>
+              <span class="funnel-sub">100 פניות · לדוגמה</span>
+            </div>
+            <ul class="funnel">
+              <li class="funnel-stage">
+                <div class="fs-top"><span class="fs-label">פניות נכנסות</span><span class="fs-val">100</span></div>
+                <span class="fs-bar" style="--w:100%"></span>
+              </li>
+              <li class="funnel-stage">
+                <div class="fs-top"><span class="fs-label">נענו בזמן</span><span class="fs-val">82</span></div>
+                <span class="fs-bar" style="--w:82%"></span>
+              </li>
+              <li class="funnel-stage funnel-bottleneck">
+                <div class="fs-top"><span class="fs-label">שיחה שהתקדמה</span><span class="fs-flag">צוואר בקבוק</span><span class="fs-val">64</span></div>
+                <span class="fs-bar" style="--w:64%"></span>
+              </li>
+              <li class="funnel-stage">
+                <div class="fs-top"><span class="fs-label">פגישה</span><span class="fs-val">38</span></div>
+                <span class="fs-bar" style="--w:38%"></span>
+              </li>
+              <li class="funnel-stage">
+                <div class="fs-top"><span class="fs-label">עסקה נסגרה</span><span class="fs-val">12</span></div>
+                <span class="fs-bar" style="--w:12%"></span>
+              </li>
+            </ul>
+            <p class="funnel-foot">איפה בדיוק נעצרות הפניות בדרך לעסקה?</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ THE CHAIN - every link looks fine ============ -->
+    <section class="section" id="problem">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">כל חוליה נראית תקינה</span>
+          <h2>כל מחלקה מראה שהמדדים שלה טובים. אבל העסקאות עדיין לא נסגרות.</h2>
+        </div>
+
+        <div class="cards-grid three-col">
+          <article class="card reveal">
+            <span class="dept-tag">שיווק</span>
+            <p>מנהל הקמפיינים מראה שהעלות לפנייה יורדת ושמדדי הקמפיין משתפרים - ולכן מבחינתו הבעיה אינה בשיווק.</p>
+          </article>
+
+          <article class="card reveal">
+            <span class="dept-tag">מכירות</span>
+            <p>צוות המכירות מראה זמני תגובה מהירים, ניסיונות התקשרות חוזרים ו־Follow-up עקבי - ולכן מבחינתו הבעיה אינה במכירות.</p>
+          </article>
+
+          <article class="card reveal">
+            <span class="dept-tag">מערכות</span>
+            <p>ה־CRM מראה שהשיחות, הפגישות והסטטוסים מתועדים ומתעדכנים בזמן אמת.</p>
+          </article>
+        </div>
+
+        <div class="question-callout reveal">
+          <p class="q-intro">אבל למרות שכל חוליה יכולה להראות שהמדדים שלה נראים טוב, השאלה החשובה באמת נשארת ללא מענה:</p>
+          <p class="q-main">מה באמת מונע היום מיותר פניות להפוך לעסקאות?</p>
+        </div>
+
+        <div class="rich-text center-block reveal">
+          <p>מבחינתכם, לא משנה מי צודק. אתם רוצים לדעת מה צריך להשתנות ולדאוג שזה קורה בשביל שהמערך כולו יעבוד טוב יותר.</p>
+          <p><strong>אנחנו לא מגיעים עם תשובה מוכנה מראש.</strong> אנחנו ב־Flowtika עוזרים לכם להתמודד עם הבעיה הזאת יחד.</p>
+          <p>המטרה היא לא לחפש מי אשם, אלא להבין מה באמת מגביל היום את המרת הפניות לעסקאות, לבחור את הפתרונות הנכונים ולהוציא אותם לפועל בצורה שאפשר לבדוק ולשפר.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ YOU MEASURE A LOT ============ -->
+    <section class="section section-soft" id="why-metrics">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">למה המדדים לא עוזרים</span>
+          <h2>אתם מודדים הרבה. אבל רוב המדדים לא מסבירים למה העסקאות לא נסגרות.</h2>
+        </div>
+
+        <div class="rich-text reveal">
+          <p>השיווק יכול להוריד את העלות לפנייה, לשפר הקלקות ולבדוק עוד קהלים וקריאייטיבים. אבל עשר פניות זולות אינן בהכרח טובות יותר מפנייה אחת רלוונטית.</p>
+          <p>המכירות יכולות למדוד כמה שיחות יצאו, כמה פעמים חזרו לכל מתעניין וכמה זמן נמשכה כל שיחה. אלה מדדים חשובים לפעילות ולסדר - אבל הם לא אומרים אם השיחה הייתה טובה, אם המתעניין התאים או מה מנע ממנו להתקדם.</p>
+
+          <div class="callout">
+            <span class="callout-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M3 17a9 9 0 0 1 18 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12 17l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="17" r="1.5" fill="currentColor"/></svg>
+            </span>
+            <p>להסתמך עליהם כדי להבין מה עוצר את התהליך זה קצת כמו לנסות לנווט בעזרת חיישני הרוורס: הם מספקים מידע, אבל לא מראים לאן צריך לנסוע.</p>
+          </div>
+
+          <p>וכשהנתונים לא מסבירים את התוצאה, הדוחות מפסיקים לעניין - או שמתחילים לקבל החלטות סביב מדד יחיד, כמו עלות לפנייה. אז מחליפים קמפיינר, משנים תסריט, מוסיפים סינון או מטמיעים מערכת חדשה, בלי לדעת אם השינוי באמת עבד או שהתוצאה הושפעה מעונתיות, מגורם חיצוני או ממזל.</p>
+          <p>כל מחלקה משפרת את ה־KPI שלה. אבל לא בהסתכלות של כלל הדרך לשיפור המרה מפנייה לעסקה.</p>
+          <p class="emphasis">לא חסרים לכם נתונים. חסרות לכם התשובות שמבהירות מה צריך לעשות עכשיו.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ METRIC vs QUESTION ============ -->
+    <section class="section" id="answers">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">המדד מול השאלה</span>
+          <h2>כל מדד שנראה טוב מסתיר שאלה שעוד לא נשאלה</h2>
+        </div>
+
+        <div class="mq-grid">
+          <article class="mq-card reveal">
+            <div class="mq-metric">
+              <span class="mq-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 15l5-5 3 3 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 6h4v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              העלות לפנייה ירדה
+            </div>
+            <p class="mq-question">אבל מה העלות של פנייה רלוונטית? האם עלות עסקה משתפרת?</p>
+          </article>
+
+          <article class="mq-card reveal">
+            <div class="mq-metric">
+              <span class="mq-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 15l5-5 3 3 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 6h4v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              הרבה פניות סומנו כ״לא רלוונטיות״
+            </div>
+            <p class="mq-question">אבל האם הן באמת לא התאימו? או שלא חזרו אליהן בזמן, ויתרו עליהן מוקדם מדי או לא הצליחו לחשוף את הצורך שלהן?</p>
+          </article>
+
+          <article class="mq-card reveal">
+            <div class="mq-metric">
+              <span class="mq-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 15l5-5 3 3 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 6h4v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              הנציגים הוציאו יותר שיחות
+            </div>
+            <p class="mq-question">אבל האם הצליחו להוציא יותר פגישות? איפה נציגים שונים מקבלים תוצאות שונות מאותן פניות?</p>
+          </article>
+
+          <article class="mq-card reveal">
+            <div class="mq-metric">
+              <span class="mq-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 15l5-5 3 3 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 6h4v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              נקבעו יותר פגישות
+            </div>
+            <p class="mq-question">אבל למה חלק מהמתעניינים מגיעים מוכנים ורציניים ואחרים מבריזים או מגיעים רק כדי לעשות סקר שוק?</p>
+          </article>
+
+          <article class="mq-card reveal">
+            <div class="mq-metric">
+              <span class="mq-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 15l5-5 3 3 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 6h4v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              בוצעו יותר Follow-ups
+            </div>
+            <p class="mq-question">אבל באיזה שלב המתעניינים מאבדים עניין? איזו התנגדות נשארת ללא מענה ואיזה מסר באמת מחזיר אותם לתהליך?</p>
+          </article>
+
+          <article class="mq-card reveal">
+            <div class="mq-metric">
+              <span class="mq-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 15l5-5 3 3 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 6h4v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              אחוז ההמרה השתפר החודש
+            </div>
+            <p class="mq-question">אבל איזה שינוי גרם לשיפור? ואיך מודדים ומפרידים את ההשפעה של השינוי שלנו מעונתיות, שינוי בתמהיל הפניות, פרויקט אחר או פשוט חודש מוצלח (מזל)?</p>
+          </article>
+        </div>
+
+        <p class="mq-closer reveal">המדדים מראים מה קרה בכל חלק של המערך. השאלות הנכונות חושפות מה מגביל את המערך כולו - אבל כדי לענות עליהן צריך להסתכל על התהליך אחרת.</p>
+      </div>
+    </section>
+
+    <!-- ============ THE APPROACH / ITERATIONS ============ -->
+    <section class="section section-soft" id="approach">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">השיטה</span>
+          <h2>עוקבים אחר הפניות עצמן, ומאתרים את צוואר הבקבוק</h2>
+          <p class="section-intro">צריך להתחקות אחר הפניות עצמן לאורך כל הדרך: מאיפה הגיעו, איך טופלו, מה קרה בשיחות, איפה התקדמו ובאיזו נקודה נעצרו.</p>
+        </div>
+
+        <div class="rich-text reveal">
+          <p>בכל רגע נתון יש בתהליך נקודה שמגבילה יותר מכל השאר את היכולת להפוך פניות לעסקאות. אנחנו ב־Flowtika עובדים יחד עם הלקוחות שלנו כדי לאתר את הנקודה הזאת. כשמשפרים אותה, המשפך מתקדם - ואז נחשף המוקד המגביל הבא.</p>
+          <p class="emphasis">לכן העבודה מתקדמת באיטרציות:</p>
+        </div>
+
+        <ol class="timeline iteration-flow">
+          <li class="timeline-step reveal">
+            <span class="step-num">01</span>
+            <h3>מזהים את צוואר הבקבוק</h3>
+          </li>
+          <li class="timeline-step reveal">
+            <span class="step-num">02</span>
+            <h3>מגדירים פעולה מתקנת</h3>
+          </li>
+          <li class="timeline-step reveal">
+            <span class="step-num">03</span>
+            <h3>מודדים את ההשפעה</h3>
+          </li>
+          <li class="timeline-step reveal">
+            <span class="step-num">04</span>
+            <h3>לומדים ומתקדמים למוקד הבא</h3>
+          </li>
+        </ol>
+
+        <p class="mq-closer reveal">כך עוברים ממעקב אחר המדדים שקל להשיג, לחיפוש התשובות והפרמטרים שבאמת מניעים פניות קדימה.</p>
+      </div>
+    </section>
+
+    <!-- ============ THE OFFER - X-RAY ============ -->
+    <section class="section" id="offer">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">מאיפה מתחילים</span>
+          <h2>בדיקת רנטגן ל־100 הפניות האחרונות שלכם</h2>
+          <p class="section-intro">כדי שתוכלו להתנסות בדרך העבודה הזאת, אנחנו מציעים להתחיל מאיטרציה אחת משותפת: בדיקת רנטגן של 100 הפניות האחרונות.</p>
+        </div>
+
+        <div class="rich-text reveal">
+          <p>נעבור יחד על הדרך שהן עברו לאורך המשפך, נזהה את צוואר הבקבוק המרכזי כרגע ונגדיר: מה כדאי לשנות קודם - ואיך נבדוק אם השינוי עבד.</p>
+          <p class="emphasis">כבר בסבב הראשון תצאו עם:</p>
+        </div>
+
+        <div class="fit-grid offer-grid reveal">
+          <div class="fit-item"><span class="fit-check" aria-hidden="true"></span><p>הבנה ברורה יותר של מה שקורה בתהליך</p></div>
+          <div class="fit-item"><span class="fit-check" aria-hidden="true"></span><p>נקודת התחלה ממוקדת</p></div>
+          <div class="fit-item"><span class="fit-check" aria-hidden="true"></span><p>דרך למדוד את השיפור</p></div>
+        </div>
+
+        <div class="offer-cta reveal">
+          <a href="#contact" class="btn btn-primary">בואו נזהה מה נכון לשפר קודם</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FINAL CTA + FORM ============ -->
+    <section class="cta-section" id="contact">
+      <div class="container cta-inner reveal">
+        <span class="eyebrow eyebrow-light">בדיקת רנטגן</span>
+        <h2>רוצים לדעת מה עוצר את משפך המכירה שלכם?</h2>
+        <p>
+          כל מה שצריך זה להשאיר לנו פרטים ואנחנו נדאג לכל השאר
+        </p>
+
+        <div class="form-wrap" id="formWrap">
+          <form id="contactForm" class="lead-form" novalidate>
+            <!-- Web3Forms relay: replace the value below with your access key from web3forms.com (verify info.flowtika@gmail.com) -->
+            <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+            <input type="hidden" name="subject" value="ליד חדש מאתר Flowtika" />
+            <input type="hidden" name="from_name" value="אתר Flowtika" />
+            <!-- honeypot (spam trap) -->
+            <input type="checkbox" name="botcheck" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+            <div class="form-header">
+              <span class="form-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="5" width="17" height="14" rx="2.5" stroke="currentColor" stroke-width="1.5"/><path d="m4.5 7 7.5 5 7.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <div class="form-header-text">
+                <span class="form-title">נתחיל בבדיקת רנטגן</span>
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="f-name">שם <span class="req">*</span></label>
+                <input id="f-name" name="name" type="text" autocomplete="name" placeholder="שם מלא" />
+                <span class="field-err" id="err-name" role="alert"></span>
+              </div>
+
+              <div class="field">
+                <label for="f-phone">טלפון <span class="req">*</span></label>
+                <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" placeholder="050-0000000" />
+                <span class="field-err" id="err-phone" role="alert"></span>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="f-business">שם העסק <span class="req">*</span></label>
+              <input id="f-business" name="business" type="text" autocomplete="organization" placeholder="שם העסק או החברה" />
+              <span class="field-err" id="err-business" role="alert"></span>
+            </div>
+
+            <div class="field">
+              <label for="f-notes">מידע נוסף שחשוב שנדע לקראת השיחה</label>
+              <textarea id="f-notes" name="notes" rows="3" placeholder="אופציונלי"></textarea>
+            </div>
+
+            <button type="submit" id="formSubmit" class="btn btn-primary form-submit" disabled>בואו נזהה מה לשפר קודם</button>
+            <p class="form-privacy">הפרטים נשמרים אצלנו בלבד. בלי ספאם, בלי שיתוף עם גורם שלישי.</p>
+            <p class="form-note" id="formError" role="alert"></p>
+          </form>
+        </div>
+
+        <div class="form-thanks" id="formThanks" hidden>
+          <span class="thanks-check" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="m5 12 4 4 10-10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <h3>תודה, קיבלנו את הפרטים</h3>
+          <p>נחזור אליכם בהקדם לתיאום בדיקת הרנטגן.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Floating CTA - appears on scroll, jumps to the lead form -->
+  <a href="#contact" class="floating-cta" id="floatingCta" aria-label="מעבר לטופס יצירת הקשר">
+    <span>לבדיקת רנטגן</span>
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="#top" class="logo logo-light" aria-label="Flowtika">
+          <span class="logo-mark" aria-hidden="true">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="ftLogoFooter" x1="12" y1="86" x2="86" y2="18" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#3f978e"/>
+                  <stop offset="0.55" stop-color="#5bb3a8"/>
+                  <stop offset="1" stop-color="#8fd3ca"/>
+                </linearGradient>
+              </defs>
+              <g stroke="url(#ftLogoFooter)" fill="none" stroke-linecap="round">
+                <circle cx="30" cy="42" r="15" stroke-width="7"/>
+                <circle cx="62" cy="72" r="14" stroke-width="6.5"/>
+                <circle cx="80" cy="26" r="8" stroke-width="4.5"/>
+                <line x1="41" y1="52.3" x2="51.8" y2="62.4" stroke-width="7"/>
+                <line x1="44.3" y1="37.4" x2="72.4" y2="28.4" stroke-width="5" stroke-dasharray="4 6.5"/>
+              </g>
+            </svg>
+          </span>
+          <span class="logo-text">Flowtika</span>
+        </a>
+        <p class="footer-desc">עוזרים לכם לאתר מה באמת מגביל את המרת הפניות לעסקאות, ולשפר את משפך המכירה איטרציה אחרי איטרציה.</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="ניווט תחתון">
+        <span class="footer-nav-title">ניווט</span>
+        <a href="#problem">הבעיה</a>
+        <a href="#answers">השאלות הנכונות</a>
+        <a href="#approach">השיטה</a>
+        <a href="#offer">בדיקת רנטגן</a>
+      </nav>
+
+      <div class="footer-contact">
+        <span class="footer-nav-title">יצירת קשר</span>
+        <a href="#contact">בדיקת רנטגן</a>
+        <a href="mailto:info.flowtika@gmail.com" class="footer-placeholder">info.flowtika@gmail.com</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <span>© <span id="year">2026</span> Flowtika · כל הזכויות שמורות</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

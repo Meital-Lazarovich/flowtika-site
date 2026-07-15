@@ -1,0 +1,14 @@
+# Flowtika — Caddy config. Place at /etc/caddy/Caddyfile on the VPS.
+# Caddy automatically obtains + renews a free Let's Encrypt SSL cert
+# for both names once DNS points at this server.
+
+flowtika.com {
+    root * /var/www/flowtika
+    encode gzip zstd
+    file_server
+}
+
+# Send www -> apex so there's one canonical URL
+www.flowtika.com {
+    redir https://flowtika.com{uri} permanent
+}

@@ -1,0 +1,5 @@
+.DS_Store
+.claude/
+
+# Stale pre-rewrite draft (old "הנדסת אמון תפעולי" positioning) — kept locally, not shipped
+index-v2.html

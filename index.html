@@ -25,11 +25,11 @@
     <div class="wrap xr-hero">
       <div class="enter">
         <p class="kicker" style="color:var(--mint)">שיפור ההמרה מפנייה לעסקה</p>
-        <h1 class="h1">100 פניות נכנסו.<br>12 נסגרו.<br><span>איפה נעלמו ה־88?</span></h1>
+        <h1 class="h1">100 פניות נכנסו.<br>12 נסגרו.<br><span>לאן נעלמו ה־88?</span></h1>
         <p class="lead">כל מחלקה מדווחת על מדדים טובים, ובכל זאת העסקאות לא מגיעות. בדרך מהפנייה לעסקה יש נקודה אחת שמגבילה את התוצאה יותר מכל השאר, ושום מדד לא מצביע עליה. Flowtika מוצאת אותה, מתקנת אותה ומודדת את ההשפעה.</p>
         <div class="cta-row">
           <a class="btn" href="#contact">לתיאום בדיקת רנטגן <svg class="ico arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
-          <a class="link" href="#approach">איך זה עובד <svg class="ico arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
+          <a class="link" href="#meter">בדקו את רמת הדליפה שלכם <svg class="ico arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
         </div>
         <p class="trust"><span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>בלי להחליף מערכות</span><span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>ההחלטה אם להמשיך נשארת אצלכם</span></p>
       </div>
@@ -64,6 +64,55 @@
     </div>
   </section>
 </div>
+
+<!-- ============ LEAK METER ============ -->
+<section class="sec meter" id="meter" aria-labelledby="meter-title">
+  <div class="wrap">
+    <header class="m-head">
+      <p class="kicker rv">מד הדליפה</p>
+      <h2 class="h2 rv" id="meter-title">כמה פניות נוזלות אצלכם? שלוש שאלות, עשר שניות.</h2>
+      <p class="lead rv">ענו בכנות, והמחוג יראה איפה התהליך שלכם עומד.</p>
+    </header>
+    <div class="m-grid">
+      <div class="m-panel rv" data-zone="0">
+        <svg class="m-dial" viewBox="0 0 440 240" aria-hidden="true" focusable="false">
+          <path class="m-face" d="M10 220A210 210 0 0 1 430 220V236H10Z"/>
+          <path class="m-band m-z1" d="M80 220A140 140 0 0 1 106.7 137.7"/>
+          <path class="m-band m-z2" d="M106.7 137.7A140 140 0 0 1 241.9 81.7"/>
+          <path class="m-band m-z3" d="M241.9 81.7A140 140 0 0 1 360 220"/>
+          <g class="m-ticks"></g>
+          <text class="m-lbl" x="128" y="194">מטופל</text>
+          <text class="m-lbl" x="186" y="132">מתקרר</text>
+          <text class="m-lbl" x="298" y="162">נוזל</text>
+          <g class="m-needle">
+            <path d="M212 220L220 70L228 220Z" fill="#13232b"/>
+            <path d="M216.6 114L220 70L223.4 114Z" fill="#e07a2e"/>
+            <circle cx="220" cy="220" r="17" fill="#13232b"/>
+            <circle cx="220" cy="220" r="6" fill="#e07a2e"/>
+          </g>
+        </svg>
+        <div class="m-read">
+          <div><span class="m-read-l">רמת דליפה</span><span class="m-zone">ממתין לתשובות</span></div>
+          <span class="m-odo" dir="ltr" aria-hidden="true"><span class="m-win"><span class="m-col"></span></span><span class="m-win"><span class="m-col"></span></span><span class="m-win"><span class="m-col"></span></span><span class="m-of">/100</span></span>
+        </div>
+      </div>
+      <div class="m-qs">
+<fieldset class="m-q rv"><legend><span class="m-qn">01</span><span>כמה זמן עובר עד שמישהו חוזר לפנייה חדשה?</span></legend><div class="m-opts"><label class="m-opt"><input type="radio" name="mq1" value="0"><span class="m-stamp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>תוך 5 דקות</span></label><label class="m-opt"><input type="radio" name="mq1" value="18"><span class="m-stamp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>באותו יום</span></label><label class="m-opt"><input type="radio" name="mq1" value="34"><span class="m-stamp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>מחר או יותר</span></label></div></fieldset>
+<fieldset class="m-q rv"><legend><span class="m-qn">02</span><span>כמה פעמים חוזרים לפנייה שלא ענתה?</span></legend><div class="m-opts"><label class="m-opt"><input type="radio" name="mq2" value="0"><span class="m-stamp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>3 פעמים ויותר</span></label><label class="m-opt"><input type="radio" name="mq2" value="16"><span class="m-stamp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>פעם או פעמיים</span></label><label class="m-opt"><input type="radio" name="mq2" value="33"><span class="m-stamp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>בדרך כלל לא</span></label></div></fieldset>
+<fieldset class="m-q rv"><legend><span class="m-qn">03</span><span>מה קורה עם ״תחזרו אליי בעוד חצי שנה״?</span></legend><div class="m-opts"><label class="m-opt"><input type="radio" name="mq3" value="0"><span class="m-stamp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>נרשם, עם תזכורת ואחראי</span></label><label class="m-opt"><input type="radio" name="mq3" value="16"><span class="m-stamp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>תלוי מי ענה</span></label><label class="m-opt"><input type="radio" name="mq3" value="33"><span class="m-stamp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>זה נעלם</span></label></div></fieldset>
+        <div class="m-out rv">
+          <p class="m-result" aria-hidden="true">ענו על שלוש השאלות, והמחוג יראה איפה התהליך עומד.</p>
+          <p class="sr-only" id="m-live" aria-live="polite"></p>
+          <p class="m-note">זו לא מדידה, זו הערכה לפי שלוש תשובות. את התמונה האמיתית מקבלים בבדיקת הרנטגן.</p>
+          <div class="m-act">
+            <p class="m-hint">אחרי שלוש התשובות יופיע כאן הצעד הבא.</p>
+            <a class="btn m-cta" href="#contact">לבדוק את זה באמת בבדיקת רנטגן <svg class="ico arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ============ METRIC VS QUESTION: the dashboard and the notes it doesn't show ============ -->
 <section class="sec" id="answers" style="background:var(--soft)">
@@ -237,6 +286,7 @@
       <div>
         <form class="form-card" id="contactForm" novalidate>
           <!-- Leads go to the Flowtika bot server (see script.js, LEAD_URL). -->
+          <input type="hidden" name="leak_score" id="book-meter" value="" />
           <input type="checkbox" name="botcheck" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
           <div class="alert" id="formError" role="alert" hidden><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5M12 16.5v.01"/></svg><div><b>הפרטים לא נשלחו.</b><span id="formErrorText">הם עדיין כאן בטופס, לא צריך להקליד שוב. נסו שוב, או כתבו לנו ל־office@flowtika.com</span></div></div>
@@ -262,6 +312,8 @@
 </div>
 
 <div class="wrap"><footer class="foot"><a class="logo" href="#top" aria-label="Flowtika - לראש הדף"><span class="mark"><svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><defs><linearGradient id="ftgFooter" x1="12" y1="86" x2="86" y2="18" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#1f5a54"/><stop offset=".55" stop-color="#2c7a72"/><stop offset="1" stop-color="#5bb3a8"/></linearGradient></defs><g stroke="url(#ftgFooter)" stroke-linecap="round"><circle cx="30" cy="42" r="15" stroke-width="7"/><circle cx="62" cy="72" r="14" stroke-width="6.5"/><circle class="node3" cx="80" cy="26" r="8" stroke-width="4.5"/><line x1="41" y1="52.3" x2="51.8" y2="62.4" stroke-width="7"/><line class="flowline" x1="44.3" y1="37.4" x2="72.4" y2="28.4" stroke-width="5"/></g></svg></span>Flowtika</a><a href="mailto:office@flowtika.com">office@flowtika.com</a><span>© <span id="year">2026</span> Flowtika</span></footer></div>
+
+</div>
 <script src="script.js"></script>
 </body>
 </html>

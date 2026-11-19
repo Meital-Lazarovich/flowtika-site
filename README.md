@@ -37,7 +37,7 @@ Layout breakpoints are container queries on `.page` (900px and 640px). Conventio
 
 ## Page structure
 
-Dark hero (100 leads scanned, trust line) → "מכירים את זה?" (scorecard) → "המדד מול השאלה" (green dashboard with an orange note per tile) → "השיטה" (three rounds, each revealing the next) → "בדיקת רנטגן" offer (3 steps and a sample report) → "מי אנחנו" (Omry and Meital, "למה בטוח להתחיל איתנו") → "שאלות ותשובות" (FAQ) → contact form (sent and error states) → footer.
+Dark hero (100 leads scanned, trust line) → "מכירים את זה?" (scorecard) → "מד הדליפה" (3 questions move a gauge; the score goes with the form as `leak_score`) → "המדד מול השאלה" (green dashboard with an orange note per tile) → "השיטה" (three rounds, each revealing the next) → "בדיקת רנטגן" offer (3 steps and a sample report) → "מי אנחנו" (Omry and Meital, "למה בטוח להתחיל איתנו") → "שאלות ותשובות" (FAQ) → contact form (sent and error states) → footer.
 
 ## Deploy
 

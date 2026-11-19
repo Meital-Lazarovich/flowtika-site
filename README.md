@@ -37,7 +37,7 @@ Conventions: RTL-first (use `inset-inline-*` / `margin-inline`, not left/right).
 
 ## Page structure
 
-Hero → "כל חוליה נראית תקינה" (3 dept cards + big-question callout) → "אתם מודדים הרבה" → "המדד מול השאלה" (6 cards) → "השיטה" (4-step iteration flow) → "בדיקת רנטגן" offer → contact form → footer.
+Hero → "כל חוליה נראית תקינה" (3 dept cards + big-question callout) → "אתם מודדים הרבה" → "המדד מול השאלה" (6 cards) → "השיטה" (4-step iteration flow) → "בדיקת רנטגן" offer → "מי אנחנו" (about Flowtika, 3 cards) → contact form → footer.
 
 ## Deploy
 

@@ -38,7 +38,7 @@ Layout breakpoints are container queries on `.page` (900px and 640px). Conventio
 
 ## Page structure
 
-Dark hero (100 leads scanned) → "כל המחלקות ירוקות. התוצאה לא." (scorecard) → "המדד מול השאלה" (green dashboard with an orange note per tile) → "השיטה" (three rounds, each revealing the next) → "בדיקת רנטגן" offer (sample report) → "מי אנחנו" (Omry and Meital, six commitments) → contact form (sent and error states) → footer.
+Dark hero (100 leads scanned, trust line) → "מכירים את זה?" (scorecard) → "המדד מול השאלה" (green dashboard with an orange note per tile) → "השיטה" (three rounds, each revealing the next) → "בדיקת רנטגן" offer (3 steps and a sample report) → "מי אנחנו" (Omry and Meital, "למה בטוח להתחיל איתנו") → "שאלות ותשובות" (FAQ) → contact form (sent and error states) → footer.
 
 ## Deploy
 
@@ -66,8 +66,9 @@ DNS: `A @` and `A www` must point at the VPS IP. Caddy issues the certificate au
 
 ## Outstanding before launch
 
-1. **The lead form does not send email yet.** `index.html` still has the placeholder
-   `access_key="YOUR_WEB3FORMS_ACCESS_KEY"`. Until a real key from
-   [web3forms.com](https://web3forms.com) (verified against the destination inbox) is
-   pasted in, the form shows its thank-you state but **silently discards the lead**.
+1. **The lead form posts to the bot server** (`LEAD_URL` in `script.js`,
+   `https://76-13-131-217.sslip.io/website/lead`). It answers 200 when the lead is saved, 400
+   when name or phone is missing, 429 after 5 tries in 10 minutes, and 502 when it can't save;
+   the form shows the matching state. Until that endpoint is live, sending shows the error
+   state (with office@flowtika.com as the fallback).
 2. **DNS cutover** — the domain still needs its `A` records pointed at the VPS.

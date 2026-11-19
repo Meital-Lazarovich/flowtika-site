@@ -4,7 +4,7 @@
 # 1. Put your VPS IP in VPS_IP below.
 # 2. Run from the project folder:  bash deploy/deploy.sh
 #
-# Re-run this any time you change a file (e.g. after adding the Web3Forms key).
+# Re-run this any time you change a file.
 set -euo pipefail
 
 VPS_IP="76.13.131.217"

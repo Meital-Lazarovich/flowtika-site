@@ -1,4 +1,4 @@
-// Flowtika: the hero's 100-leads scan, and the lead form (validation, email relay, sent and error states).
+// Flowtika: the hero's 100-leads scan, and the lead form (validation, sending to the bot server, sent and error states).
 
 (function () {
   'use strict';
@@ -35,6 +35,10 @@
   var submitBtn = document.getElementById('formSubmit');
   var submitLabel = submitBtn.querySelector('span');
   var formError = document.getElementById('formError');
+  var formErrorText = document.getElementById('formErrorText');
+  var FALLBACK = formErrorText.textContent;
+  // The Flowtika bot server saves the lead and alerts Omry.
+  var LEAD_URL = 'https://76-13-131-217.sslip.io/website/lead';
   var thanks = document.getElementById('formThanks');
   var thanksTitle = document.getElementById('thanksTitle');
 
@@ -84,23 +88,30 @@
       thanks.focus({ preventScroll: true });
       thanks.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
-    function failed() {
+    function failed(text) {
       // The details stay in the form, so the visitor can just press send again.
       submitBtn.disabled = false;
       submitLabel.textContent = original;
+      formErrorText.textContent = text || FALLBACK;
       formError.hidden = false;
     }
 
-    // Email relay not configured yet: preview the thank-you flow without sending.
-    var key = form.elements.access_key.value;
-    if (/YOUR_WEB3FORMS_ACCESS_KEY/.test(key)) {
-      window.setTimeout(succeed, 600);
-      return;
-    }
+    // Sent as a form body (not JSON), so the browser needs no CORS preflight.
+    var body = new URLSearchParams();
+    ['name', 'phone', 'business', 'notes'].forEach(function (f) { body.append(f, form.elements[f].value.trim()); });
+    body.append('botcheck', form.elements.botcheck.checked ? 'on' : '');
 
-    fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(form) })
-      .then(function (r) { return r.json(); })
-      .then(function (json) { if (json && json.success) succeed(); else failed(); })
-      .catch(failed);
+    fetch(LEAD_URL, { method: 'POST', body: body })
+      .then(function (r) {
+        if (r.ok) return succeed();
+        if (r.status === 400) {
+          // The server is missing a name or phone: mark the fields again.
+          Object.keys(rules).forEach(function (name) { check(form.elements[name]); });
+          return failed('חסר שם או טלפון. השלימו את הפרטים ונסו שוב.');
+        }
+        if (r.status === 429) return failed('היו יותר מדי ניסיונות. נסו שוב בעוד כמה דקות, או כתבו לנו ל־office@flowtika.com');
+        failed();
+      })
+      .catch(function () { failed(); });
   });
 })();

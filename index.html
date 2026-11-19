@@ -236,13 +236,10 @@
       </div>
       <div>
         <form class="form-card" id="contactForm" novalidate>
-          <!-- Web3Forms relay: replace the value below with your access key from web3forms.com (verify office@flowtika.com) -->
-          <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
-          <input type="hidden" name="subject" value="ליד חדש מאתר Flowtika" />
-          <input type="hidden" name="from_name" value="אתר Flowtika" />
+          <!-- Leads go to the Flowtika bot server (see script.js, LEAD_URL). -->
           <input type="checkbox" name="botcheck" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
-          <div class="alert" id="formError" role="alert" hidden><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5M12 16.5v.01"/></svg><div><b>הפרטים לא נשלחו.</b>הם עדיין כאן בטופס, לא צריך להקליד שוב. נסו שוב, או כתבו לנו ל־office@flowtika.com</div></div>
+          <div class="alert" id="formError" role="alert" hidden><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5M12 16.5v.01"/></svg><div><b>הפרטים לא נשלחו.</b><span id="formErrorText">הם עדיין כאן בטופס, לא צריך להקליד שוב. נסו שוב, או כתבו לנו ל־office@flowtika.com</span></div></div>
           <div class="form-grid">
             <div class="field"><label for="f-name">שם</label><input id="f-name" name="name" autocomplete="name" placeholder="שם מלא"><span class="err" id="err-name"></span></div>
             <div class="field"><label for="f-phone">טלפון</label><input id="f-phone" name="phone" type="tel" inputmode="tel" dir="ltr" style="text-align:right" autocomplete="tel" placeholder="050-0000000"><span class="err" id="err-phone"></span></div>

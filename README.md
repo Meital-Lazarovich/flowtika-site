@@ -11,8 +11,7 @@ Static, hand-written site (no build step, no dependencies). Hebrew, RTL-first.
 | `script.js` | The hero's 100-leads scan, lead-form validation, submit, sent and error states |
 | `images/` | Team photos for "מי אנחנו" |
 | `logo.svg` | Standalone logo (the logo is also inlined in `index.html`) |
-| `deploy/Caddyfile` | Web-server config for the VPS |
-| `deploy/deploy.sh` | Uploads the site (and `images/`) to the VPS over `scp` |
+| `deploy/deploy.sh` | Uploads the committed site (and `images/`) to the VPS |
 
 ## Run locally
 
@@ -42,27 +41,20 @@ Dark hero (100 leads scanned) → "כל המחלקות ירוקות. התוצא�
 
 ## Deploy
 
-The site is served by [Caddy](https://caddyserver.com) on a Hostinger KVM VPS. Caddy handles HTTPS automatically (Let's Encrypt) — no certbot, no renewal cron.
+The site runs on the same Hostinger VPS as the Flowtika bot (76.13.131.217, ssh alias `flowtika-vps`).
+The bot's Caddy, in Docker under `/opt/flowtika`, already serves `/opt/flowtika/site` on port 80, so
+there is no web server to install here. Don't install Caddy or nginx on the server separately: Docker's
+Caddy holds ports 80 and 443.
 
-One-time server setup (Ubuntu/Debian):
-
-```bash
-apt update && apt install -y debian-keyring debian-archive-keyring apt-transport-https curl
-curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
-curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | tee /etc/apt/sources.list.d/caddy-stable.list
-apt update && apt install -y caddy
-mkdir -p /var/www/flowtika
-```
-
-Then copy `deploy/Caddyfile` to `/etc/caddy/Caddyfile` on the server and `systemctl reload caddy`.
-
-To ship changes:
+To ship the committed version of the branch you're on (normally main):
 
 ```bash
-bash deploy/deploy.sh      # set VPS_IP at the top of the script first
+bash deploy/deploy.sh
 ```
 
-DNS: `A @` and `A www` must point at the VPS IP. Caddy issues the certificate automatically once DNS resolves there.
+It's then live at http://76.13.131.217. Domains and HTTPS are set in the bot repo's Caddyfile
+(`/opt/flowtika/Caddyfile` on the server): once `flowtika.com` and `www` point at the VPS (`A` records),
+its `:80` block becomes `flowtika.com, www.flowtika.com { ... }` and Caddy gets the certificates itself.
 
 ## Outstanding before launch
 

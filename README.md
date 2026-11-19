@@ -8,10 +8,11 @@ Static, hand-written site (no build step, no dependencies). Hebrew, RTL-first.
 |---|---|
 | `index.html` | The entire page (single file, all content) |
 | `styles.css` | All styling. Design tokens are CSS variables in `:root` at the top |
-| `script.js` | Reveal-on-scroll, sticky header, floating CTA, lead-form validation + submit |
+| `script.js` | The hero's 100-leads scan, lead-form validation, submit, sent and error states |
+| `images/` | Team photos for "מי אנחנו" |
 | `logo.svg` | Standalone logo (the logo is also inlined in `index.html`) |
 | `deploy/Caddyfile` | Web-server config for the VPS |
-| `deploy/deploy.sh` | Uploads the site to the VPS over `scp` |
+| `deploy/deploy.sh` | Uploads the site (and `images/`) to the VPS over `scp` |
 
 ## Run locally
 
@@ -28,16 +29,16 @@ Use `127.0.0.1` rather than `localhost` if something else (e.g. Docker) occupies
 
 Everything derives from the CSS variables in `:root` (`styles.css`):
 
-- **Surfaces** `--bg`, `--bg-soft`, `--bg-tint`
+- **Surfaces** `--paper`, `--soft`, `--tint`, dark hero `--night`
 - **Text** `--ink`, `--ink-2`, `--muted`
-- **Brand** `--navy`, `--accent` (teal `#2c7a72`), `--accent-soft`
-- **Shape** `--radius`, `--shadow-sm/md`, `--maxw` (1160px), `--pad`
+- **Brand** `--teal`, `--teal-deep`, `--mint` (hero), `--amber` (the bottleneck / the question)
+- **Shape** `--r`, `--r-sm`, `--sh-1/2`, motion `--ease-out`, `--dur*`
 
-Conventions: RTL-first (use `inset-inline-*` / `margin-inline`, not left/right). Font is Assistant via Google Fonts. Short hyphens only — no em-dashes in copy. Breakpoints at 980px and 680px.
+Layout breakpoints are container queries on `.page` (900px and 640px). Conventions: RTL-first (use `inset-inline-*` / `margin-inline`, not left/right). Font is Assistant via Google Fonts. Short hyphens only, no em-dashes in copy.
 
 ## Page structure
 
-Hero → "כל חוליה נראית תקינה" (3 dept cards + big-question callout) → "אתם מודדים הרבה" → "המדד מול השאלה" (6 cards) → "השיטה" (4-step iteration flow) → "בדיקת רנטגן" offer → "מי אנחנו" (about Flowtika, 3 cards) → contact form → footer.
+Dark hero (100 leads scanned) → "כל המחלקות ירוקות. התוצאה לא." (scorecard) → "המדד מול השאלה" (green dashboard with an orange note per tile) → "השיטה" (three rounds, each revealing the next) → "בדיקת רנטגן" offer (sample report) → "מי אנחנו" (Omry and Meital, six commitments) → contact form (sent and error states) → footer.
 
 ## Deploy
 

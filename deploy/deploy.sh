@@ -19,4 +19,8 @@ fi
 echo "Uploading site -> root@${VPS_IP}:${REMOTE_DIR}"
 scp "$SRC_DIR/index.html" "$SRC_DIR/styles.css" "$SRC_DIR/script.js" "$SRC_DIR/logo.svg" \
     "root@${VPS_IP}:${REMOTE_DIR}/"
+# Asset folders (photos and anything added later) go up whole.
+for dir in images; do
+  [ -d "$SRC_DIR/$dir" ] && scp -r "$SRC_DIR/$dir" "root@${VPS_IP}:${REMOTE_DIR}/"
+done
 echo "Done. Once DNS points at the VPS, visit https://flowtika.com"

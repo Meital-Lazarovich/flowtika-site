@@ -99,6 +99,8 @@
     // Sent as a form body (not JSON), so the browser needs no CORS preflight.
     var body = new URLSearchParams();
     ['name', 'phone', 'business', 'notes'].forEach(function (f) { body.append(f, form.elements[f].value.trim()); });
+    // The leak meter's score, when the visitor answered all three questions.
+    if (form.elements.leak_score && form.elements.leak_score.value) body.append('leak_score', form.elements.leak_score.value);
     body.append('botcheck', form.elements.botcheck.checked ? 'on' : '');
 
     fetch(LEAD_URL, { method: 'POST', body: body })
@@ -114,4 +116,48 @@
       })
       .catch(function () { failed(); });
   });
+})();
+
+// Leak meter: three questions move the needle and the odometer, then show the X-ray button.
+(function () {
+  var root = document.getElementById('meter'); if (!root) return;
+  root.classList.add('js-on');
+  var NS = 'http://www.w3.org/2000/svg', CX = 220, CY = 220, g = root.querySelector('.m-ticks');
+  /* score 0..100 maps to 180deg (left) .. 0deg (right) */
+  for (var i = 0; i <= 20; i++) {
+    var sc = i * 5, a = (180 - sc * 1.8) * Math.PI / 180, maj = i % 2 === 0, r1 = maj ? 154 : 164, r2 = 178;
+    var l = document.createElementNS(NS, 'line');
+    l.setAttribute('x1', (CX + r1 * Math.cos(a)).toFixed(1)); l.setAttribute('y1', (CY - r1 * Math.sin(a)).toFixed(1));
+    l.setAttribute('x2', (CX + r2 * Math.cos(a)).toFixed(1)); l.setAttribute('y2', (CY - r2 * Math.sin(a)).toFixed(1));
+    l.setAttribute('pathLength', '1'); l.setAttribute('class', 'm-tick' + (maj ? '' : ' minor')); l.style.setProperty('--i', i);
+    g.appendChild(l);
+    if (i % 4 === 0) { var t = document.createElementNS(NS, 'text'); t.setAttribute('x', (CX + 196 * Math.cos(a)).toFixed(1)); t.setAttribute('y', (CY - 196 * Math.sin(a) + 5).toFixed(1)); t.setAttribute('class', 'm-n'); t.textContent = sc; g.appendChild(t); }
+  }
+  var cols = root.querySelectorAll('.m-col');
+  cols.forEach(function (c) { for (var d = 0; d <= 9; d++) { var sp = document.createElement('span'); sp.textContent = d; c.appendChild(sp); } });
+  var panel = root.querySelector('.m-panel'), needle = root.querySelector('.m-needle'), zoneEl = root.querySelector('.m-zone'),
+      resEl = root.querySelector('.m-result'), live = root.querySelector('#m-live'), act = root.querySelector('.m-act'), cta = root.querySelector('.m-cta');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { panel.classList.add('is-in'); io.disconnect(); } }); }, { threshold: .3 });
+    io.observe(panel);
+  } else panel.classList.add('is-in');
+  var Z = [null,
+    ['מטופל', 'מטופל. המענה וה־Follow-up מסודרים. השאלה הבאה היא אם הפניות מגיעות מהלקוחות הנכונים.'],
+    ['מתקרר', 'מתקרר. יש חורים בתהליך, ובדרך כלל הם ב־Follow-up.'],
+    ['נוזל', 'נוזל. כאן הולכות לאיבוד עסקאות, ובשביל זה עושים בדיקת רנטגן.']];
+  function update() {
+    var checked = root.querySelectorAll('.m-q input:checked'); if (!checked.length) return;
+    var sc = 0; checked.forEach(function (r) { sc += parseInt(r.value, 10) || 0; }); sc = Math.min(100, sc);
+    needle.style.setProperty('--a', (-90 + sc * 1.8) + 'deg');
+    var str = ('00' + sc).slice(-3);
+    cols.forEach(function (c, k) { c.style.setProperty('--d', str.charAt(k)); });
+    var z = sc <= 20 ? 1 : sc <= 55 ? 2 : 3;
+    panel.setAttribute('data-zone', z); zoneEl.textContent = Z[z][0]; resEl.textContent = Z[z][1];
+    live.textContent = 'רמת דליפה ' + sc + '. ' + Z[z][1];
+    if (checked.length === 3) {
+      act.classList.add('is-ready'); cta.classList.add('is-ready');
+      var hid = document.getElementById('book-meter'); if (hid) hid.value = sc;
+    }
+  }
+  root.addEventListener('change', function (e) { if (e.target && e.target.type === 'radio') update(); });
 })();

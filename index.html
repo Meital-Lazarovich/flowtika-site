@@ -314,6 +314,29 @@
 <div class="wrap"><footer class="foot"><a class="logo" href="#top" aria-label="Flowtika - לראש הדף"><span class="mark"><svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><defs><linearGradient id="ftgFooter" x1="12" y1="86" x2="86" y2="18" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#1f5a54"/><stop offset=".55" stop-color="#2c7a72"/><stop offset="1" stop-color="#5bb3a8"/></linearGradient></defs><g stroke="url(#ftgFooter)" stroke-linecap="round"><circle cx="30" cy="42" r="15" stroke-width="7"/><circle cx="62" cy="72" r="14" stroke-width="6.5"/><circle class="node3" cx="80" cy="26" r="8" stroke-width="4.5"/><line x1="41" y1="52.3" x2="51.8" y2="62.4" stroke-width="7"/><line class="flowline" x1="44.3" y1="37.4" x2="72.4" y2="28.4" stroke-width="5"/></g></svg></span>Flowtika</a><a href="mailto:office@flowtika.com">office@flowtika.com</a><span>© <span id="year">2026</span> Flowtika</span></footer></div>
 
 </div>
+
+<!-- ============ WHATSAPP WIDGET: name and phone, sent to the bot server like the contact form ============ -->
+<button type="button" class="wa-fab" id="waOpen" aria-haspopup="dialog" aria-controls="waChat" aria-expanded="false" aria-label="השאירו פרטים ונחזור אליכם בוואטסאפ"><svg class="wa-glyph" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3.5A12.5 12.5 0 0 0 5.2 22.3L3.6 28.4l6.3-1.6A12.5 12.5 0 1 0 16 3.5z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><path d="M11.6 9.6c.4 0 .8 0 1 .6l1.2 2.8c.1.3.1.6-.1.9l-.8 1c-.2.2-.2.5 0 .8a10 10 0 0 0 4.5 4c.3.1.6.1.8-.1l1-1.2c.2-.3.6-.4.9-.2l2.7 1.3c.4.2.5.5.5.9-.1 1.6-1.6 2.9-3.2 2.9-4.7-.3-9.8-5.4-10.1-10.1 0-1.6 1.2-3.1 2.8-3.2z" fill="currentColor"/></svg></button>
+<div class="wa-chat" id="waChat" role="dialog" aria-modal="true" aria-labelledby="waTitle" hidden>
+  <header class="wa-head">
+    <span class="wa-avatar"><svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><g stroke="#fff" stroke-linecap="round"><circle cx="30" cy="42" r="15" stroke-width="7"/><circle cx="62" cy="72" r="14" stroke-width="6.5"/><circle cx="80" cy="26" r="8" stroke-width="4.5"/><line x1="41" y1="52.3" x2="51.8" y2="62.4" stroke-width="7"/><line x1="44.3" y1="37.4" x2="72.4" y2="28.4" stroke-width="5" stroke-dasharray="4 6.5"/></g></svg></span>
+    <div class="wa-who"><b id="waTitle">Flowtika</b><span>בדרך כלל עונים תוך כמה דקות</span></div>
+    <button type="button" class="wa-close" id="waClose" aria-label="סגירת הצ׳אט"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+  </header>
+  <div class="wa-body" id="waLog" aria-live="polite">
+    <p class="wa-msg in">היי 👋 השאירו שם וטלפון ונחזור אליכם בוואטסאפ<time>עכשיו</time></p>
+  </div>
+  <form class="wa-form" id="waForm" novalidate>
+    <input type="checkbox" name="botcheck" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
+    <div class="wa-fields">
+      <label class="sr-only" for="wa-name">שם</label>
+      <input id="wa-name" name="name" autocomplete="name" placeholder="שם" required>
+      <label class="sr-only" for="wa-phone">טלפון</label>
+      <input id="wa-phone" name="phone" type="tel" inputmode="tel" dir="ltr" autocomplete="tel" placeholder="טלפון, למשל 050-1234567" required>
+    </div>
+    <button type="submit" class="wa-send" id="waSend" aria-label="שליחה"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.4 20.4L21 12 3.4 3.6 3.4 10l12.6 2-12.6 2z" fill="currentColor"/></svg></button>
+  </form>
+</div>
 <script src="script.js"></script>
 </body>
 </html>

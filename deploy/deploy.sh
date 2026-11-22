@@ -17,7 +17,7 @@ echo "Uploading $BRANCH ($(git rev-parse --short HEAD)) -> $HOST:$REMOTE_DIR"
 
 # Unpacked next to the live folder first, then copied in. The folder itself is kept, because Caddy's
 # container has it mounted and a replaced folder would not be seen until Caddy restarts.
-git archive --format=tar HEAD index.html styles.css script.js logo.svg images \
+git archive --format=tar HEAD index.html styles.css script.js logo.svg images privacy \
   | ssh "$HOST" "set -e
       rm -rf $REMOTE_DIR.new && mkdir -p $REMOTE_DIR.new $REMOTE_DIR
       tar -xf - -C $REMOTE_DIR.new

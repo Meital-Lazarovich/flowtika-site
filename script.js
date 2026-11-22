@@ -295,7 +295,7 @@
           sent = true;
           form.hidden = true;
           var first = name.split(/\s+/)[0];
-          setTimeout(function () { bubble('in', 'תודה ' + first + ', נחזור אליכם בוואטסאפ בקרוב'); closeBtn.focus(); }, 500);
+          setTimeout(function () { bubble('in', 'מעולה ' + first + ' 🙌 אנחנו כבר מתכוננים לשיחה איתכם. נחזור אליכם בוואטסאפ עם כמה שאלות קצרות על הפניות שלכם.'); closeBtn.focus(); }, 500);
           return;
         }
         if (r.status === 400) return failed('חסר שם או טלפון. השלימו ונסו שוב, או כתבו לנו ל־office@flowtika.com');

@@ -1,4 +1,13 @@
-// Flowtika: the hero's 100-leads scan, and the lead form (validation, sending to the bot server, sent and error states). Replies go out by email..
+// Flowtika: the hero's 100-leads scan, and the lead form (validation, sending to the bot server, sent and error states). Replies go out by email.
+
+// Switches for parts of the site. The WhatsApp button is off until the WhatsApp line is ready
+// (Omry, 2026-11-23); set whatsapp to true to bring it back. That is the only change needed.
+var FEATURES = { whatsapp: false };
+
+// Israeli phone numbers: mobile 05X, 07X lines and landlines, with 0 or +972 / 972 in front.
+function isIsraeliPhone(v) {
+  return /^(?:972|0)(?:5\d{8}|7\d{8}|[23489]\d{7})$/.test(String(v).replace(/\D/g, ''));
+}
 
 (function () {
   'use strict';
@@ -44,7 +53,7 @@
 
   var rules = {
     name: [function (v) { return v.trim().length >= 2; }, 'יש להזין שם'],
-    phone: [function (v) { return v.replace(/\D/g, '').length >= 9; }, 'יש להזין מספר טלפון תקין'],
+    phone: [isIsraeliPhone, 'יש להזין מספר טלפון ישראלי תקין, למשל 050-1234567'],
     email: [function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()); }, 'יש להזין כתובת אימייל תקינה'],
     business: [function (v) { return v.trim().length >= 2; }, 'יש להזין את שם העסק']
   };
@@ -161,4 +170,148 @@
     }
   }
   root.addEventListener('change', function (e) { if (e.target && e.target.type === 'radio') update(); });
+})();
+
+// WhatsApp widget: a WhatsApp-style chat that takes a name and phone and sends them to the bot server
+// (the same endpoint as the contact form, with source=whatsapp).
+(function () {
+  'use strict';
+
+  // Off while FEATURES.whatsapp is false: the markup stays hidden and no listeners attach.
+  if (!FEATURES.whatsapp) return;
+  var fab = document.getElementById('waOpen');
+  var chat = document.getElementById('waChat');
+  if (!fab || !chat) return;
+  fab.hidden = false;
+
+  var LEAD_URL = 'https://76-13-131-217.sslip.io/website/lead';
+  var form = document.getElementById('waForm');
+  var log = document.getElementById('waLog');
+  var nameIn = document.getElementById('wa-name');
+  var phoneIn = document.getElementById('wa-phone');
+  var send = document.getElementById('waSend');
+  var closeBtn = document.getElementById('waClose');
+  var sent = false;
+
+  var TICKS = '<svg class="ticks" viewBox="0 0 16 11" aria-hidden="true"><path d="M1 6l3 3 6-7M6 9l1 1 7-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+  function LTR(t) { return '\u2066' + t + '\u2069'; }
+
+  function now() {
+    var d = new Date();
+    return ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2);
+  }
+
+  function bubble(kind, text, ticks) {
+    var p = document.createElement('p');
+    p.className = 'wa-msg ' + kind;
+    p.textContent = text;
+    var t = document.createElement('time');
+    t.textContent = now();
+    if (ticks) t.insertAdjacentHTML('beforeend', TICKS);
+    p.appendChild(t);
+    log.appendChild(p);
+    log.scrollTop = log.scrollHeight;
+    return p;
+  }
+
+  // Israeli numbers: mobile 05X-XXXXXXX, landline 0X-XXXXXXX, 07X lines, with 0 or +972 / 972 in front.
+  var validPhone = isIsraeliPhone;
+
+  function mark(input, ok) {
+    input.classList.toggle('invalid', !ok);
+    if (ok) input.removeAttribute('aria-invalid'); else input.setAttribute('aria-invalid', 'true');
+  }
+
+  function focusables() {
+    return Array.prototype.filter.call(
+      chat.querySelectorAll('button, input:not([tabindex="-1"]), [href]'),
+      function (el) { return !el.disabled && el.offsetParent !== null; }
+    );
+  }
+
+  function open() {
+    chat.hidden = false;
+    fab.setAttribute('aria-expanded', 'true');
+    (sent ? closeBtn : nameIn).focus();
+  }
+  function close() {
+    chat.hidden = true;
+    fab.setAttribute('aria-expanded', 'false');
+    fab.focus();
+  }
+
+  fab.addEventListener('click', function () { if (chat.hidden) open(); else close(); });
+  closeBtn.addEventListener('click', close);
+
+  chat.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { e.preventDefault(); close(); return; }
+    if (e.key !== 'Tab') return;
+    // Keep the keyboard inside the chat while it's open.
+    var els = focusables();
+    if (!els.length) return;
+    var first = els[0], last = els[els.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+
+  // The button steps aside while the contact form is on screen, so it never covers the form.
+  var contact = document.getElementById('contact');
+  if (contact && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) {
+      es.forEach(function (en) { fab.classList.toggle('is-away', en.isIntersecting && chat.hidden); });
+    }, { threshold: 0.15 }).observe(contact);
+  }
+
+  [nameIn, phoneIn].forEach(function (inp) {
+    inp.addEventListener('input', function () { if (inp.classList.contains('invalid')) mark(inp, inp === nameIn ? inp.value.trim().length >= 2 : validPhone(inp.value)); });
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (sent) return;
+    var name = nameIn.value.trim();
+    var phone = phoneIn.value.trim();
+    var okName = name.length >= 2, okPhone = validPhone(phone);
+    mark(nameIn, okName); mark(phoneIn, okPhone);
+    if (!okName || !okPhone) {
+      bubble('err', !okName ? 'נא לכתוב שם.' : 'נא לכתוב מספר טלפון ישראלי תקין, למשל ' + LTR('050\u20111234567') + '.');
+      (!okName ? nameIn : phoneIn).focus();
+      return;
+    }
+
+    // Numbers are isolated left-to-right so they read correctly inside the Hebrew bubble.
+    var out = bubble('out', name + '\n' + LTR(phone), true);
+    send.disabled = true;
+
+    var body = new URLSearchParams();
+    body.append('name', name);
+    body.append('phone', phone);
+    body.append('source', 'whatsapp');
+    var score = document.getElementById('book-meter');
+    if (score && score.value) body.append('leak_score', score.value);
+    body.append('botcheck', form.elements.botcheck.checked ? 'on' : '');
+
+    function failed(text) {
+      // What they typed stays in the fields, so they can just press send again.
+      out.remove();
+      send.disabled = false;
+      bubble('err', text || 'ההודעה לא נשלחה. אפשר לנסות שוב, או לכתוב לנו ל־office@flowtika.com');
+    }
+
+    fetch(LEAD_URL, { method: 'POST', body: body })
+      .then(function (r) {
+        if (r.ok) {
+          sent = true;
+          form.hidden = true;
+          var first = name.split(/\s+/)[0];
+          setTimeout(function () { bubble('in', 'מעולה ' + first + ' 🙌 אנחנו כבר מתכוננים לשיחה איתכם. נחזור אליכם בוואטסאפ עם כמה שאלות קצרות על הפניות שלכם.'); closeBtn.focus(); }, 500);
+          return;
+        }
+        if (r.status === 400) return failed('חסר שם או טלפון. השלימו ונסו שוב, או כתבו לנו ל־office@flowtika.com');
+        if (r.status === 429) return failed('היו יותר מדי ניסיונות. נסו שוב בעוד כמה דקות, או כתבו לנו ל־office@flowtika.com');
+        failed();
+      })
+      .catch(function () { failed(); });
+  });
 })();

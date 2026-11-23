@@ -281,7 +281,7 @@
       <div>
         <p class="kicker">בדיקת רנטגן</p>
         <h2 class="h2">רוצים לדעת מה עוצר את המשפך שלכם?</h2>
-        <p class="lead" style="margin-top:18px">השאירו שלושה פרטים, ואנחנו נחזור אליכם לתיאום בדיקת הרנטגן.</p><ul class="checks"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>בלי להחליף מערכות</li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>ההחלטה אם להמשיך נשארת אצלכם</li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>הפרטים נשמרים אצלנו בלבד</li></ul>
+        <p class="lead" style="margin-top:18px">השאירו כמה פרטים, ואנחנו נחזור אליכם במייל לתיאום בדיקת הרנטגן.</p><ul class="checks"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>בלי להחליף מערכות</li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>ההחלטה אם להמשיך נשארת אצלכם</li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>הפרטים נשמרים אצלנו בלבד</li></ul>
       </div>
       <div>
         <form class="form-card" id="contactForm" novalidate>
@@ -293,7 +293,8 @@
           <div class="form-grid">
             <div class="field"><label for="f-name">שם</label><input id="f-name" name="name" autocomplete="name" placeholder="שם מלא"><span class="err" id="err-name"></span></div>
             <div class="field"><label for="f-phone">טלפון</label><input id="f-phone" name="phone" type="tel" inputmode="tel" dir="ltr" style="text-align:right" autocomplete="tel" placeholder="050-0000000"><span class="err" id="err-phone"></span></div>
-            <div class="field full"><label for="f-business">שם העסק</label><input id="f-business" name="business" autocomplete="organization" placeholder="שם העסק או החברה"><span class="err" id="err-business"></span></div>
+            <div class="field"><label for="f-email">אימייל</label><input id="f-email" name="email" type="email" inputmode="email" dir="ltr" style="text-align:right" autocomplete="email" placeholder="name@company.co.il" required><span class="err" id="err-email"></span></div>
+            <div class="field"><label for="f-business">שם העסק</label><input id="f-business" name="business" autocomplete="organization" placeholder="שם העסק או החברה"><span class="err" id="err-business"></span></div>
             <div class="field full"><label for="f-notes">מה חשוב שנדע לפני השיחה? <span style="font-weight:400;color:var(--muted)">(לא חובה)</span></label><textarea id="f-notes" name="notes"></textarea></div>
           </div>
           <button class="btn" type="submit" id="formSubmit"><span>בואו נזהה מה לשפר קודם</span> <svg class="ico arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
@@ -303,8 +304,8 @@
         <div class="form-card done" id="formThanks" hidden tabindex="-1">
           <svg class="seal" viewBox="0 0 96 96" fill="none" stroke="#1f5a54" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="48" cy="48" r="44"/><path d="M30 49l12 12 24-26"/></svg>
           <h2 class="h2" id="thanksTitle">תודה, קיבלנו</h2>
-          <p>נחזור אליכם בהקדם לתיאום בדיקת הרנטגן.</p>
-          <ol class="next"><li><span>1</span>נחזור אליכם לתיאום</li><li><span>2</span>עוברים יחד על 100 הפניות האחרונות</li><li><span>3</span>מגדירים מה לשנות קודם, ואיך נמדוד</li></ol>
+          <p>נחזור אליכם במייל בהקדם לתיאום בדיקת הרנטגן.</p>
+          <ol class="next"><li><span>1</span>נחזור אליכם במייל לתיאום</li><li><span>2</span>עוברים יחד על 100 הפניות האחרונות</li><li><span>3</span>מגדירים מה לשנות קודם, ואיך נמדוד</li></ol>
         </div>
       </div>
     </div>
@@ -315,28 +316,6 @@
 
 </div>
 
-<!-- ============ WHATSAPP WIDGET: name and phone, sent to the bot server like the contact form ============ -->
-<button type="button" class="wa-fab" id="waOpen" aria-haspopup="dialog" aria-controls="waChat" aria-expanded="false" aria-label="השאירו פרטים ונחזור אליכם בוואטסאפ"><svg class="wa-glyph" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3.5A12.5 12.5 0 0 0 5.2 22.3L3.6 28.4l6.3-1.6A12.5 12.5 0 1 0 16 3.5z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><path d="M11.6 9.6c.4 0 .8 0 1 .6l1.2 2.8c.1.3.1.6-.1.9l-.8 1c-.2.2-.2.5 0 .8a10 10 0 0 0 4.5 4c.3.1.6.1.8-.1l1-1.2c.2-.3.6-.4.9-.2l2.7 1.3c.4.2.5.5.5.9-.1 1.6-1.6 2.9-3.2 2.9-4.7-.3-9.8-5.4-10.1-10.1 0-1.6 1.2-3.1 2.8-3.2z" fill="currentColor"/></svg></button>
-<div class="wa-chat" id="waChat" role="dialog" aria-modal="true" aria-labelledby="waTitle" hidden>
-  <header class="wa-head">
-    <span class="wa-avatar"><svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><g stroke="#fff" stroke-linecap="round"><circle cx="30" cy="42" r="15" stroke-width="7"/><circle cx="62" cy="72" r="14" stroke-width="6.5"/><circle cx="80" cy="26" r="8" stroke-width="4.5"/><line x1="41" y1="52.3" x2="51.8" y2="62.4" stroke-width="7"/><line x1="44.3" y1="37.4" x2="72.4" y2="28.4" stroke-width="5" stroke-dasharray="4 6.5"/></g></svg></span>
-    <div class="wa-who"><b id="waTitle">Flowtika</b><span>בדרך כלל עונים תוך כמה דקות</span></div>
-    <button type="button" class="wa-close" id="waClose" aria-label="סגירת הצ׳אט"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
-  </header>
-  <div class="wa-body" id="waLog" aria-live="polite">
-    <p class="wa-msg in">היי 👋 השאירו שם וטלפון ונחזור אליכם בוואטסאפ<time>עכשיו</time></p>
-  </div>
-  <form class="wa-form" id="waForm" novalidate>
-    <input type="checkbox" name="botcheck" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
-    <div class="wa-fields">
-      <label class="sr-only" for="wa-name">שם</label>
-      <input id="wa-name" name="name" autocomplete="name" placeholder="שם" required>
-      <label class="sr-only" for="wa-phone">טלפון</label>
-      <input id="wa-phone" name="phone" type="tel" inputmode="tel" dir="ltr" autocomplete="tel" placeholder="טלפון, למשל 050-1234567" required>
-    </div>
-    <button type="submit" class="wa-send" id="waSend" aria-label="שליחה"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.4 20.4L21 12 3.4 3.6 3.4 10l12.6 2-12.6 2z" fill="currentColor"/></svg></button>
-  </form>
-</div>
 <script src="script.js"></script>
 </body>
 </html>

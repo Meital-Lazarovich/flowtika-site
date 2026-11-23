@@ -39,6 +39,21 @@ Layout breakpoints are container queries on `.page` (900px and 640px). Conventio
 
 Dark hero (100 leads scanned, trust line) → "מכירים את זה?" (scorecard) → "מד הדליפה" (3 questions move a gauge; the score goes with the form as `leak_score`) → "המדד מול השאלה" (green dashboard with an orange note per tile) → "השיטה" (three rounds, each revealing the next) → "בדיקת רנטגן" offer (3 steps and a sample report) → "מי אנחנו" (Omry and Meital, "למה בטוח להתחיל איתנו") → "שאלות ותשובות" (FAQ) → contact form (sent and error states) → footer.
 
+## WhatsApp button (disabled)
+
+The floating WhatsApp button and its chat popup (name and phone, sent to the lead endpoint with
+`source=whatsapp`) are in the code but switched off until the WhatsApp line is ready.
+
+To turn it on, change one line at the top of `script.js`:
+
+```js
+var FEATURES = { whatsapp: true };
+```
+
+and deploy. While it's `false`, the markup in `index.html` (`data-feature="whatsapp"`) stays hidden,
+nothing in it can be focused, and no listeners attach. Its styles are the `WhatsApp widget` block in
+`styles.css`. When it comes back, also restore its line in `privacy/index.html` (Hebrew and English).
+
 ## Deploy
 
 The site runs on the same Hostinger VPS as the Flowtika bot (76.13.131.217, ssh alias `flowtika-vps`).

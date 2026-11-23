@@ -1,4 +1,13 @@
-// Flowtika: the hero's 100-leads scan, and the lead form (validation, sending to the bot server, sent and error states).
+// Flowtika: the hero's 100-leads scan, and the lead form (validation, sending to the bot server, sent and error states). Replies go out by email.
+
+// Switches for parts of the site. The WhatsApp button is off until the WhatsApp line is ready
+// (Omry, 2026-11-23); set whatsapp to true to bring it back. That is the only change needed.
+var FEATURES = { whatsapp: false };
+
+// Israeli phone numbers: mobile 05X, 07X lines and landlines, with 0 or +972 / 972 in front.
+function isIsraeliPhone(v) {
+  return /^(?:972|0)(?:5\d{8}|7\d{8}|[23489]\d{7})$/.test(String(v).replace(/\D/g, ''));
+}
 
 (function () {
   'use strict';
@@ -44,7 +53,8 @@
 
   var rules = {
     name: [function (v) { return v.trim().length >= 2; }, 'יש להזין שם'],
-    phone: [function (v) { return v.replace(/\D/g, '').length >= 9; }, 'יש להזין מספר טלפון תקין'],
+    phone: [isIsraeliPhone, 'יש להזין מספר טלפון ישראלי תקין, למשל 050-1234567'],
+    email: [function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()); }, 'יש להזין כתובת אימייל תקינה'],
     business: [function (v) { return v.trim().length >= 2; }, 'יש להזין את שם העסק']
   };
 
@@ -98,7 +108,7 @@
 
     // Sent as a form body (not JSON), so the browser needs no CORS preflight.
     var body = new URLSearchParams();
-    ['name', 'phone', 'business', 'notes'].forEach(function (f) { body.append(f, form.elements[f].value.trim()); });
+    ['name', 'phone', 'email', 'business', 'notes'].forEach(function (f) { body.append(f, form.elements[f].value.trim()); });
     // The leak meter's score, when the visitor answered all three questions.
     if (form.elements.leak_score && form.elements.leak_score.value) body.append('leak_score', form.elements.leak_score.value);
     body.append('botcheck', form.elements.botcheck.checked ? 'on' : '');
@@ -107,9 +117,9 @@
       .then(function (r) {
         if (r.ok) return succeed();
         if (r.status === 400) {
-          // The server is missing a name or phone: mark the fields again.
+          // The server is missing a name, phone or email: mark the fields again.
           Object.keys(rules).forEach(function (name) { check(form.elements[name]); });
-          return failed('חסר שם או טלפון. השלימו את הפרטים ונסו שוב.');
+          return failed('חסרים פרטים: שם, טלפון או אימייל. השלימו אותם ונסו שוב.');
         }
         if (r.status === 429) return failed('היו יותר מדי ניסיונות. נסו שוב בעוד כמה דקות, או כתבו לנו ל־office@flowtika.com');
         failed();
@@ -167,9 +177,12 @@
 (function () {
   'use strict';
 
+  // Off while FEATURES.whatsapp is false: the markup stays hidden and no listeners attach.
+  if (!FEATURES.whatsapp) return;
   var fab = document.getElementById('waOpen');
   var chat = document.getElementById('waChat');
   if (!fab || !chat) return;
+  fab.hidden = false;
 
   var LEAD_URL = 'https://76-13-131-217.sslip.io/website/lead';
   var form = document.getElementById('waForm');
@@ -203,10 +216,7 @@
   }
 
   // Israeli numbers: mobile 05X-XXXXXXX, landline 0X-XXXXXXX, 07X lines, with 0 or +972 / 972 in front.
-  function validPhone(v) {
-    var d = v.replace(/\D/g, '');
-    return /^(?:972|0)(?:5\d{8}|7\d{8}|[23489]\d{7})$/.test(d);
-  }
+  var validPhone = isIsraeliPhone;
 
   function mark(input, ok) {
     input.classList.toggle('invalid', !ok);
